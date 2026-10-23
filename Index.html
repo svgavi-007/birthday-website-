@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Srijita ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle, #56105e, #200027, #050008);
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+#lock {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.lockbox {
+    width: 100%;
+    max-width: 370px;
+    padding: 30px 22px;
+    border: 1px solid #ff69b4;
+    border-radius: 25px;
+    background: #ffffff10;
+    box-shadow: 0 0 30px #ff149355;
+}
+
+.gift {
+    font-size: 65px;
+    animation: bounce 1.5s infinite;
+}
+
+.lockbox h1 {
+    color: #ff9de6;
+    margin: 18px 0;
+}
+
+.lockbox p {
+    color: #ffe1f5;
+    line-height: 1.8;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 22px 0 12px;
+    border: 2px solid #ff69b4;
+    border-radius: 12px;
+    background: #250b30;
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    letter-spacing: 8px;
+}
+
+button {
+    padding: 13px 22px;
+    margin: 8px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff1493, #9932cc);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 18px #ff149355;
+}
+
+#error {
+    color: #ff9da8;
+    margin-top: 12px;
+}
+
+#birthday {
+    display: none;
+    padding: 35px 18px 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.title {
+    color: #ff9de6;
+    font-size: clamp(30px, 8vw, 46px);
+    text-shadow: 0 0 15px #ff00bb, 0 0 35px #ff00bb;
+    animation: glow 2s infinite alternate;
+}
+
+.name {
+    font-size: clamp(42px, 12vw, 65px);
+    font-weight: bold;
+    color: white;
+    margin: 18px 0;
+    text-shadow: 0 0 15px #ff1493, 0 0 35px #ff1493;
+    animation: heartbeat 1.2s infinite;
+}
+
+.date {
+    color: #ffd700;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+    text-shadow: 0 0 15px #ffb6c1;
+}
+
+.cake {
+    font-size: 85px;
+    margin: 20px;
+    animation: bounce 1.5s infinite;
+}
+
+.wish {
+    max-width: 620px;
+    margin: 28px auto;
+    padding: 25px 20px;
+    line-height: 1.9;
+    font-size: 16px;
+    color: #ffe7f7;
+    text-align: left;
+    background: #ffffff10;
+    border: 1px solid #ff69b4;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #ff149333;
+}
+
+.wish h2 {
+    text-align: center;
+    color: #ff9de6;
+    margin-bottom: 22px;
+}
+
+.signature {
+    text-align: center;
+    margin-top: 25px;
+    color: #ff9de6;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.heart {
+    position: fixed;
+    bottom: -50px;
+    z-index: 1;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+}
+
+.balloon {
+    position: fixed;
+    bottom: -100px;
+    font-size: 42px;
+    z-index: 1;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+}
+
+.confetti {
+    position: fixed;
+    top: -15px;
+    width: 8px;
+    height: 13px;
+    z-index: 1;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+@keyframes glow {
+    from { opacity: .8; }
+    to { opacity: 1; }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+
+<div id="lock">
+    <div class="lockbox">
+
+        <div class="gift">🎁💗</div>
+
+        <h1>A Little Surprise</h1>
+
+        <p>
+            Someone special has prepared a surprise
+            just for you! ✨<br><br>
+            Enter the secret password to unlock
+            your birthday gift. 💖
+        </p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="••••"
+            maxlength="4"
+            inputmode="numeric"
+        >
+
+        <br>
+
+        <button onclick="unlock()">
+            🔓 Unlock My Surprise
+        </button>
+
+        <p id="error"></p>
+
+    </div>
+</div>
+
+
+<!-- BIRTHDAY PAGE -->
+
+<div id="birthday">
+
+    <h1 class="title">🎉 Happy Birthday 🎉</h1>
+
+    <div class="name">Srijita ❤️</div>
+
+    <div class="date">🎂 30th October 🎂</div>
+
+    <p style="color:#ffc9ee;font-size:18px">
+        ✨ Your Special Day ✨
+    </p>
+
+    <div class="cake">🎂</div>
+
+    <button onclick="startMusic()">
+        🎵 Play Birthday Music
+    </button>
+
+    <button onclick="stopMusic()">
+        ⏸ Stop Music
+    </button>
+
+    <div class="wish">
+
+        <h2>💖 A Special Birthday Wish 💖</h2>
+
+        Happy Birthday, Srijita! 🎂❤️✨
+
+        <br><br>
+
+        Today is a very special day because it is
+        the day someone as wonderful as you came
+        into this beautiful world. On this 30th of
+        October, I hope your day is filled with
+        happiness, laughter, love, and countless
+        beautiful memories. 🥹💗
+
+        <br><br>
+
+        May your life always be as beautiful as
+        the brightest stars in the sky. May every
+        dream you carry in your heart slowly turn
+        into reality, and may every new day bring
+        you closer to the things that make you
+        truly happy. 🌸✨
+
+        <br><br>
+
+        You deserve all the beautiful things life
+        has to offer. I hope you always have a
+        reason to smile, someone to share your
+        happiness with, and the courage to follow
+        your dreams no matter how difficult the
+        journey becomes. 🦋💕
+
+        <br><br>
+
+        May this new chapter of your life bring
+        you endless opportunities, wonderful
+        adventures, peaceful moments, and
+        unforgettable experiences. May you keep
+        growing, learning, achieving your goals,
+        and becoming the person you dream of
+        being. 🌷💫
+
+        <br><br>
+
+        Always remember that your smile can make
+        a day brighter, your kindness can make a
+        difference, and your presence can make
+        ordinary moments feel special. Never
+        forget how valuable and unique you are.
+        Keep shining in your own beautiful way.
+        💖🌟
+
+        <br><br>
+
+        On your birthday, I wish you a heart full
+        of peace, a mind full of beautiful dreams,
+        and a life full of reasons to be grateful.
+        May the coming year surprise you with
+        wonderful moments you never expected
+        and happiness that stays with you for a
+        long, long time. 🎀💝
+
+        <br><br>
+
+        I hope this little surprise brings a
+        beautiful smile to your face. I wanted
+        to make something special for your
+        special day, something that reminds you
+        that birthdays are not just about cakes
+        and candles, but also about the beautiful
+        memories and wishes people share with
+        you. 🎁💗
+
+        <br><br>
+
+        May every candle you blow out represent
+        a wish waiting to come true. May every
+        birthday moment become a memory worth
+        keeping, and may your future be filled
+        with more happiness than you can imagine.
+        🕯️🎂
+
+        <br><br>
+
+        Srijita, keep smiling, keep dreaming,
+        keep believing in yourself, and keep
+        spreading happiness wherever you go.
+        May you always find beauty in little
+        things and strength during difficult
+        times. You deserve a wonderful birthday
+        and an even more wonderful year ahead.
+        🫶🏻❤️
+
+        <br><br>
+
+        Once again, the happiest birthday to you!
+        May your 30th October be filled with
+        laughter, love, sweet surprises, and
+        magical moments. May all your wishes
+        come true, today and always. 🎉💜
+
+        <br><br>
+
+        <div class="signature">
+            With lots of love and best wishes ❤️
+            <br><br>
+            Happy Birthday, Srijita! 🎂🎈
+            <br>
+            Keep Smiling Always! 💖✨
+        </div>
+
+    </div>
+
+    <p style="color:#ffb6e6;font-size:18px">
+        Made with ❤️ especially for Srijita
+    </p>
+
+</div>
+
+
+<!-- SONG FILE -->
+
+<audio id="birthdaySong" loop preload="auto">
+    <source src="Birthday%20.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+// PASSWORD
+
+const SECRET_PASSWORD = "1714";
+
+function unlock() {
+
+    const input = document.getElementById("password").value;
+
+    if (input === SECRET_PASSWORD) {
+
+        document.getElementById("lock").style.display = "none";
+
+        document.getElementById("birthday").style.display = "block";
+
+        startEffects();
+
+        window.scrollTo(0, 0);
+
+    } else {
+
+        document.getElementById("error").textContent =
+            "Wrong password! Try again 💗";
+
+        document.getElementById("password").value = "";
+    }
+}
+
+document.getElementById("password")
+.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        unlock();
+    }
+
+});
+
+
+// PLAY SONG
+
+function startMusic() {
+
+    const song = document.getElementById("birthdaySong");
+
+    song.play().catch(function() {
+
+        alert(
+            "Song not found! Put birthday.mp3 in the same folder as index.html."
+        );
+
+    });
+}
+
+
+// STOP SONG
+
+function stopMusic() {
+
+    const song = document.getElementById("birthdaySong");
+
+    song.pause();
+
+    song.currentTime = 0;
+}
+
+
+// FLOATING HEARTS
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.textContent = [
+        "❤️", "💖", "💕", "💗", "💜", "💘"
+    ][Math.floor(Math.random() * 6)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (18 + Math.random() * 25) + "px";
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function() {
+        heart.remove();
+    }, 10000);
+}
+
+
+// FLYING BALLOONS
+
+function createBalloon() {
+
+    const balloon = document.createElement("div");
+
+    balloon.className = "balloon";
+
+    balloon.textContent = [
+        "🎈", "💗", "🎈", "💜", "🎈"
+    ][Math.floor(Math.random() * 5)];
+
+    balloon.style.left = Math.random() * 100 + "vw";
+
+    balloon.style.animationDuration =
+        (8 + Math.random() * 6) + "s";
+
+    document.body.appendChild(balloon);
+
+    setTimeout(function() {
+        balloon.remove();
+    }, 15000);
+}
+
+
+// CONFETTI
+
+function createConfetti() {
+
+    for (let i = 0; i < 65; i++) {
+
+        const piece = document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.style.left = Math.random() * 100 + "vw";
+
+        piece.style.backgroundColor = [
+            "#ff1493",
+            "#ffd700",
+            "#00ffff",
+            "#adff2f",
+            "#ffffff",
+            "#ba55d3"
+        ][Math.floor(Math.random() * 6)];
+
+        piece.style.animationDuration =
+            (3 + Math.random() * 5) + "s";
+
+        piece.style.animationDelay =
+            (Math.random() * 5) + "s";
+
+        document.body.appendChild(piece);
+    }
+}
+
+
+// START ANIMATIONS
+
+let effectsStarted = false;
+
+function startEffects() {
+
+    if (effectsStarted) return;
+
+    effectsStarted = true;
+
+    setInterval(createHeart, 350);
+
+    setInterval(createBalloon, 1200);
+
+    createConfetti();
+}
+
+</script>
+
+</body>
+  </html>
